@@ -20,7 +20,7 @@ def main():
         if play_again == "y":
             continue
 
-        print("\nSee you next time!\n")
+        print("\nGoodbye! See you next time\n")
         break
 
 
@@ -45,7 +45,7 @@ def hangman():
         letter_guessed = prompt_user()
 
         if letter_guessed in correct_letters or letter_guessed in incorrect_letters:
-            print(f"You've already guessed '{letter_guessed}'\n")
+            print(f">>> You've already guessed '{letter_guessed}'\n")
             continue
 
         if letter_guessed in hidden_word :
@@ -59,14 +59,16 @@ def hangman():
 
         print(new_state + "\n")
         print(attempt_state)
-        print(f"Wrong guesses: '{incorrect_letters}'\n")
+
+        if attempts_remaining > 0:
+            print(f"Wrong guesses: '{incorrect_letters}'\n")
 
         if not "_" in new_state:
-            print("You've guessed the word!")
+            print("Congrats! You've guessed the word!")
             break
 
         if len(incorrect_letters) == 6:
-            print(f"The word was '{hidden_word}'\n")
+            print(f"Sorry! The word was '{hidden_word}'\n")
             break
 
 
@@ -97,7 +99,7 @@ def attempt_status(attempt_remaining):
     
         if attempt_remaining == 6:
             return """Attempts remaining: X X X X X X\n
-        x----x
+        x-------x
         |             
         |
         |
@@ -157,7 +159,7 @@ def attempt_status(attempt_remaining):
         |      /|\\
         |      / \\
         |
-        
+
         GAME OVER
             """
 
@@ -168,11 +170,11 @@ def prompt_user():
         guess_letter = input("Guess a letter: ")
 
         if not guess_letter.isalpha():
-            print("Enter a valid letter")
+            print(">>> Enter a valid letter")
             continue
 
         if len(guess_letter) > 1:
-            print("Enter only one letter")
+            print(">>> Enter only one letter")
             continue
 
         break
