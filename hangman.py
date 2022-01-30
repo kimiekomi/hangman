@@ -75,7 +75,7 @@ def random_word(list):
     if debug: print(f"initialized random_word()")
 
     hidden_word = random.choice(list)
-
+    print(hidden_word)
     if "-" in hidden_word:
         hidden_word = random.choice(list)
 
@@ -96,19 +96,70 @@ def word_status(word):
 def attempt_status(attempt_remaining):
     
         if attempt_remaining == 6:
-            return "Attempts remaining: X X X X X X"
+            return """Attempts remaining: X X X X X X\n
+        x----x
+        |             
+        |
+        |
+        |
+        |
+        """
         if attempt_remaining == 5:
-            return "Attempts remaining: X X X X X "
+            return """Attempts remaining: X X X X X\n
+        x-------x
+        |       |
+        |       0
+        |       
+        |
+        |
+        """
         if attempt_remaining == 4:
-            return "Attempts remaining: X X X X "
+            return """Attempts remaining: X X X X\n
+        x-------x
+        |       |
+        |       0
+        |       |
+        |
+        |
+        """
         if attempt_remaining == 3:
-            return "Attempts remaining: X X X "
+            return """Attempts remaining: X X X \n
+        x-------x
+        |       |
+        |       0
+        |      /|
+        |
+        |
+        """
         if attempt_remaining == 2:
-            return "Attempts remaining: X X "
+            return """Attempts remaining: X X\n
+        x-------x
+        |       |
+        |       0
+        |      /|\\
+        |
+        |
+        """
         if attempt_remaining == 1:
-            return "Attempts remaining: X "
+            return """Attempts remaining: X\n
+        x-------x
+        |       |
+        |       0
+        |      /|\\
+        |      /
+        |
+        """
         else:
-            return "Attempts remaining: None"
+            return """Attempts remaining: None\n
+        x-------x
+        |       |
+        |       0
+        |      /|\\
+        |      / \\
+        |
+        
+        GAME OVER
+            """
 
 
 def prompt_user():
