@@ -10,6 +10,19 @@ import word_bank
 
 debug = True
 
+def main():
+    while True:
+        hangman()
+
+        play_again = input("Play again? (y/n)").lower()
+
+        if play_again == "y":
+            continue
+
+        print("See you next time!")
+        break
+
+
 def hangman():
 
     if debug: print(f"initialized hangman()")
@@ -43,6 +56,8 @@ def hangman():
         new_state = letter_compare(hidden_word, correct_letters)
 
         print(new_state)
+        print(attempt_state)
+        print(f"Wrong guesses: '{incorrect_letters}'")
 
         if not "_" in new_state:
             print("You've guessed the word!")
@@ -131,4 +146,4 @@ def letter_compare(secret_word, correct_letters):
 
 
 if __name__ == "__main__":
-    hangman()
+    main()
