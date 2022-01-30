@@ -19,24 +19,24 @@ def hangman():
     incorrect_letters = ""
 
     while True:
-        while True:
-            letter_guessed = prompt_user()
+        letter_guessed = prompt_user()
 
-            if letter_guessed in hidden_word:
-                correct_letters += letter_guessed
-            
-            else:
-                incorrect_letters += letter_guessed
+        if letter_guessed in hidden_word:
+            correct_letters += letter_guessed
+        else:
+            incorrect_letters += letter_guessed
 
-            new_state = letter_compare(hidden_word, correct_letters)
+        new_state = letter_compare(hidden_word, correct_letters)
 
-            print(new_state)
+        print(new_state)
 
-            if not "_" in new_state:
-                print("You've guessed the word!")
+        if not "_" in new_state:
+            print("You've guessed the word!")
+            break
 
-            if len(incorrect_letters) == 6:
-                print("You ran out of attempts")
+        if len(incorrect_letters) == 6:
+            print("You ran out of attempts")
+            break
 
         
 
