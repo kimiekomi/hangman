@@ -8,10 +8,11 @@ Description: recreation of the classic word-guessing game - Hangman.
 import random
 import word_bank
 
-debug = True
+debug = False
 
 def main():
     while True:
+        print("\nLets Play Hangman!\n")
         hangman()
 
         play_again = input("Play again? (y/n)").lower()
@@ -19,7 +20,7 @@ def main():
         if play_again == "y":
             continue
 
-        print("See you next time!")
+        print("\nSee you next time!\n")
         break
 
 
@@ -30,41 +31,42 @@ def hangman():
     hidden_word = random_word(word_bank.word_bank)
     if debug: print(f"hidden_word - {hidden_word}")
 
-    attempt_remaining = 6
     word_state = word_status(hidden_word)
-    attempt_state = attempt_status(attempt_remaining)
+    
 
     print(word_state)
-    print(attempt_state)
     print()
 
     correct_letters = ""
     incorrect_letters = ""
+    attempts_remaining = 6
 
     while True:
         letter_guessed = prompt_user()
 
         if letter_guessed in correct_letters or letter_guessed in incorrect_letters:
-            print(f"You've already guessed '{letter_guessed}'")
+            print(f"You've already guessed '{letter_guessed}'\n")
             continue
 
         if letter_guessed in hidden_word :
             correct_letters += letter_guessed
         else:
             incorrect_letters += letter_guessed
+            attempts_remaining -= 1
 
         new_state = letter_compare(hidden_word, correct_letters)
+        attempt_state = attempt_status(attempts_remaining)
 
-        print(new_state)
+        print(new_state + "\n")
         print(attempt_state)
-        print(f"Wrong guesses: '{incorrect_letters}'")
+        print(f"Wrong guesses: '{incorrect_letters}'\n")
 
         if not "_" in new_state:
             print("You've guessed the word!")
             break
 
         if len(incorrect_letters) == 6:
-            print(f"You ran out of attempts. The word was {hidden_word}")
+            print(f"The word was '{hidden_word}'\n")
             break
 
 
@@ -77,7 +79,7 @@ def random_word(list):
     if "-" in hidden_word:
         hidden_word = random.choice(list)
 
-    if debug: print(f"hidden_word = {hidden_word}")
+    if debug: print(f"hidden_word - {hidden_word}")
 
     return hidden_word
 
@@ -105,6 +107,8 @@ def attempt_status(attempt_remaining):
             return "Attempts remaining: X X "
         if attempt_remaining == 1:
             return "Attempts remaining: X "
+        else:
+            return "Attempts remaining: None"
 
 
 def prompt_user():
