@@ -1,11 +1,21 @@
+"""
+Date Created: 01/29/22
+By: M Lassiter
+Description: recreation of the classic word-guessing game - Hangman. 
+
+"""
+
 import random
 import word_bank
 
 debug = True
 
 def hangman():
+
+    if debug: print(f"initialized hangman()")
+
     hidden_word = random_word(word_bank.word_bank)
-    print(hidden_word)
+    if debug: print(f"hidden_word - {hidden_word}")
 
     attempt_remaining = 6
     word_state = word_status(hidden_word)
@@ -35,7 +45,7 @@ def hangman():
             break
 
         if len(incorrect_letters) == 6:
-            print("You ran out of attempts")
+            print(f"You ran out of attempts. The word was {hidden_word}")
             break
 
         
@@ -47,10 +57,15 @@ def hangman():
 
 
 def random_word(list):
+
+    if debug: print(f"initialized random_word()")
+
     hidden_word = random.choice(list)
 
     if "-" in hidden_word:
         hidden_word = random.choice(list)
+
+    if debug: print(f"hidden_word = {hidden_word}")
 
     return hidden_word
 
@@ -94,6 +109,8 @@ def prompt_user():
             continue
 
         break
+
+    if debug: print(f"guess_ letter - {guess_letter}")
 
     return guess_letter
 
