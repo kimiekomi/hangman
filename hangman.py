@@ -31,7 +31,11 @@ def hangman():
     while True:
         letter_guessed = prompt_user()
 
-        if letter_guessed in hidden_word:
+        if letter_guessed in correct_letters or letter_guessed in incorrect_letters:
+            print(f"You've already guessed '{letter_guessed}'")
+            continue
+
+        if letter_guessed in hidden_word :
             correct_letters += letter_guessed
         else:
             incorrect_letters += letter_guessed
@@ -47,13 +51,6 @@ def hangman():
         if len(incorrect_letters) == 6:
             print(f"You ran out of attempts. The word was {hidden_word}")
             break
-
-        
-
-
-
-
-    
 
 
 def random_word(list):
