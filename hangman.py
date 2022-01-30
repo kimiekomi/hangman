@@ -95,9 +95,9 @@ def word_status(word):
     return word_state
 
 
-def attempt_status(attempt_remaining):
+def attempt_status(attempts_remaining):
     
-        if attempt_remaining == 6:
+        if attempts_remaining == 6:
             return """Attempts remaining: X X X X X X\n
         x-------x
         |             
@@ -106,7 +106,7 @@ def attempt_status(attempt_remaining):
         |
         |
         """
-        if attempt_remaining == 5:
+        if attempts_remaining == 5:
             return """Attempts remaining: X X X X X\n
         x-------x
         |       |
@@ -115,7 +115,7 @@ def attempt_status(attempt_remaining):
         |
         |
         """
-        if attempt_remaining == 4:
+        if attempts_remaining == 4:
             return """Attempts remaining: X X X X\n
         x-------x
         |       |
@@ -124,7 +124,7 @@ def attempt_status(attempt_remaining):
         |
         |
         """
-        if attempt_remaining == 3:
+        if attempts_remaining == 3:
             return """Attempts remaining: X X X \n
         x-------x
         |       |
@@ -133,7 +133,7 @@ def attempt_status(attempt_remaining):
         |
         |
         """
-        if attempt_remaining == 2:
+        if attempts_remaining == 2:
             return """Attempts remaining: X X\n
         x-------x
         |       |
@@ -142,7 +142,7 @@ def attempt_status(attempt_remaining):
         |
         |
         """
-        if attempt_remaining == 1:
+        if attempts_remaining == 1:
             return """Attempts remaining: X\n
         x-------x
         |       |
