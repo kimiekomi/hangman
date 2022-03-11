@@ -77,7 +77,7 @@ def random_word(list):
     if debug: print(f"initialized random_word()")
 
     hidden_word = random.choice(list)
-    print(hidden_word)
+
     if "-" in hidden_word:
         hidden_word = random.choice(list)
 
